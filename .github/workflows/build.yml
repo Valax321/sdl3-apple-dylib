@@ -28,7 +28,7 @@ jobs:
       # Run the actual build script
       - name: Build libraries
         run: |
-          ./build.ps1
+          pwsh ./build.ps1
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
