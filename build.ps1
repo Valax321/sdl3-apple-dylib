@@ -1,4 +1,4 @@
-$sdlVersion = '3.4.14'
+$sdlVersion = '3.4.16'
 
 &gh repo clone 'libsdl-org/SDL' src/SDL3 -- -b "release-$sdlVersion" --recursive
 
