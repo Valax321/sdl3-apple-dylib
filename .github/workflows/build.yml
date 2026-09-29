@@ -6,9 +6,9 @@ name: Build macOS
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,12 +29,19 @@ jobs:
       - name: Build libraries
         run: |
           pwsh ./build.ps1
+          pwsh ./build_mixer.ps1
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Upload the build artifacts
-      - name: Archive artifacts
+      - name: Archive SDL3
         uses: actions/upload-artifact@v4
         with:
-          name: SDL3-apple-dylib
-          path: artifacts/
+          name: SDL3
+          path: build/SDL3_installed/
+
+      - name: Archive SDL3_Mixer
+        uses: actions/upload-artifact@v4
+        with:
+          name: SDL3_mixer
+          path: build/SDL3_mixer_installed/
