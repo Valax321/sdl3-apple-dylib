@@ -56,4 +56,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SDL3_mixer
-          path: build/SDL3_mixer.tar
+          path: SDL3_mixer.tar
