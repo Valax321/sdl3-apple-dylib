@@ -26,9 +26,15 @@ jobs:
       - uses: actions/checkout@v4
 
       # Run the actual build script
-      - name: Build libraries
+      - name: Build SDL3
         run: |
           pwsh ./build.ps1
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Run the actual build script
+      - name: Build SDL3_mixer
+        run: |
           pwsh ./build_mixer.ps1
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
