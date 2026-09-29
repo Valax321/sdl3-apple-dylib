@@ -32,12 +32,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Tar SDL3
+        run: tar -cvf SDL3.tar build/SDL3_installed
+
       # Upload the build artifacts
       - name: Archive SDL3
         uses: actions/upload-artifact@v4
         with:
           name: SDL3
-          path: build/SDL3_installed/
+          path: SDL3.tar
 
       # Run the actual build script
       - name: Build SDL3_mixer
@@ -46,8 +49,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Tar SDL3_mixer
+        run: tar -cvf SDL3_mixer.tar build/SDL3_mixer_installed
+
       - name: Archive SDL3_Mixer
         uses: actions/upload-artifact@v4
         with:
           name: SDL3_mixer
-          path: build/SDL3_mixer_installed/
+          path: build/SDL3_mixer.tar
